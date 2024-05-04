@@ -1,19 +1,29 @@
 name: Lambda Compliance Check
 
 on:
+  push:
+    branches: [ main ]
   schedule:
-    - cron: '0 15 * * *'  # Example: Run at 15:00 UTC
-
+    - cron: '0 15 * * *'  # Run daily at 1500 UTC
+    
 jobs:
   compliance_check:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
         python-version: '3.9'
+
     - name: Install dependencies
       run: pip install -r requirements.txt
+
     - name: Run compliance check script
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: 'us-east-1'  # Set your AWS region here
       run: python src/lambda_compliance_check.py
