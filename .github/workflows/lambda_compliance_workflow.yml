@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   schedule:
-    - cron: '50 14 * * *'  # Run daily at 14:50 UTC
+    - cron: '15 15 * * *'  # Run daily at 14:50 UTC
     
 jobs:
   compliance_check:
@@ -26,4 +26,4 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: 'us-east-1'  # Set your AWS region here
-      run: python src/lambda_compliance_check.py
+      run: python src/lambda-compliance-checker.py
