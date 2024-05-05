@@ -4,4 +4,7 @@ Python script that checks AWS Lambda functions for compliance with certain stand
     a) function uses Python 3.8
     b) monitoring is enabled
     c) certain security layer is used
+    For example, present code triggers the following 2 violations:
+    1) monitoring violation because monitoring is not enabled in the existing lambda function in my AWS account, 's3_lambda2'
+    2) security layer violation because my function does not use the security layer
 
