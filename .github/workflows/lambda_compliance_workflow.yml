@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   schedule:
-    - cron: '45 21 * * *'  # Run daily at 2130 UTC
+    - cron: '5 22 * * *'  # Run daily at 2130 UTC
     
 jobs:
   compliance_check:
